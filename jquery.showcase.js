@@ -1207,6 +1207,17 @@ window.Showcase = (function ($, global) {
 	api = {
 		
 		/**
+		 * Get the jaShowcaseMain container as a jQuery Object
+		 * @return {Object}
+		 */
+		content: function () {
+			
+			if (utility.ready()) { return sc.content;
+			} else { return $(); }
+			
+		},
+		
+		/**
 		 * Displays the Showcase and enables the controls
 		 * @param {Function} callback A function to execute when the Showcase is enabled
 		 * @param {boolean} hideMain If the Main Div should not be displayed
