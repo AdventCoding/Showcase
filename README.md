@@ -40,7 +40,7 @@ Showcase.disable();
 
 | Key | Description | Default |
 | :---: | --- | :---: |
-| overlayClose | If the Overlay click event should close the Showcase | false |
+| overlayClose | If the Overlay click event should close the Showcase | true |
 | animate | Allows the Main Div to animate its position and dimensions | true |
 | width | Sizes the Showcase to the specified width | 400 |
 | height | Sizes the Showcase to the specified height | 300 |
@@ -48,7 +48,7 @@ Showcase.disable();
 | scaleContent | Scales some Showcase content, such as images, if the dimensions exceed the Window dimensions | false |
 | hoverControls | Shows/Hides the Showcase Controls on the hover event | false |
 | infoContent | The content for the Info Bar; see the infoContent Option below | null |
-| imageRegExp | The RegExp used to check for image content, since an \<img\> tag is needed | See Below |
+| imageRegExp | The RegExp used to check for image content, since an &lt;img&gt; tag is needed | See Below |
 >imageRegExp Default: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|
 \.png|\.svg|\.tif|\.tiff|\.wbmp$/
 
