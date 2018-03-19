@@ -1207,8 +1207,8 @@ window.Showcase = (function ($, global) {
 	api = {
 		
 		/**
-		 * Get the jaShowcaseMain container as a jQuery Object
-		 * @return {Object}
+		 * Get the jaShowcaseContent container as a jQuery Object
+		 * @return {Object} Returns an empty jQuery collection if Showcase is not ready
 		 */
 		content: function () {
 			
