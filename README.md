@@ -46,9 +46,9 @@ Showcase.disable();
 | height | Sizes the Showcase to the specified height | 300 |
 | navigateElements | The jQuery selector or collection to use if navigation is needed | null |
 | scaleContent | Scales some Showcase content, such as images, if the dimensions exceed the Window dimensions | false |
-| hoverControls | Gives the Showcase Controls a hover effect | false |
+| hoverControls | Shows/Hides the Showcase Controls on the hover event | false |
 | infoContent | The content for the Info Bar; see the infoContent Option below | null |
-| imageRegExp | The RegExp used to check for image content, since an <img> tag is needed | See Below |
+| imageRegExp | The RegExp used to check for image content, since an \<img\> tag is needed | See Below |
 >imageRegExp Default: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|
 \.png|\.svg|\.tif|\.tiff|\.wbmp$/
 
