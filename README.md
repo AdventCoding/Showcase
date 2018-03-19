@@ -9,9 +9,9 @@ We need the stylesheet, jQuery, and the Showcase plugin. Then we can select the 
 
 ```html
 <head>
-<link rel="stylesheet" href="https://github.com/AdventCoding/jQShowcase/blob/master/css/showcase_white.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-<script src="https://github.com/AdventCoding/jQShowcase/blob/master/jquery.showcase.js"></script>
+<link rel="stylesheet" href="https://github.com/AdventCoding/Showcase/blob/master/css/showcase_white.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://github.com/AdventCoding/Showcase/blob/master/jquery.showcase.js"></script>
 </head>
 <body>
 <img src="/images/image1.jpg" width="200" alt="Image1...">
@@ -38,16 +38,17 @@ Showcase.disable();
 
 ### Options
 
-|Key|Description|Default
-|overlayClose|If the Overlay click event should close the Showcase|false
-|animate|Allows the Main Div to animate its position and dimensions|true
-|width|Sizes the Showcase to the specified width|400
-|height|Sizes the Showcase to the specified height|300
-|navigateElements|The jQuery selector or collection to use if navigation is needed|null
-|scaleContent|Scales some Showcase content, such as images, if the dimensions exceed the Window dimensions|false
-|hoverControls|Gives the Showcase Controls a hover effect|false
-|infoContent|The content for the Info Bar; see the infoContent Option below|null
-|imageRegExp|The RegExp used to check for image content, since an <img> tag is needed|See Below
+| Key | Description | Default |
+| :---: | --- | :---: |
+| overlayClose | If the Overlay click event should close the Showcase | false |
+| animate | Allows the Main Div to animate its position and dimensions | true |
+| width | Sizes the Showcase to the specified width | 400 |
+| height | Sizes the Showcase to the specified height | 300 |
+| navigateElements | The jQuery selector or collection to use if navigation is needed | null |
+| scaleContent | Scales some Showcase content, such as images, if the dimensions exceed the Window dimensions | false |
+| hoverControls | Gives the Showcase Controls a hover effect | false |
+| infoContent | The content for the Info Bar; see the infoContent Option below | null |
+| imageRegExp | The RegExp used to check for image content, since an <img> tag is needed | See Below |
 >imageRegExp Default: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|
 \.png|\.svg|\.tif|\.tiff|\.wbmp$/
 
