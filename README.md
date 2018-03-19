@@ -52,7 +52,7 @@ Showcase.disable();
 >imageRegExp Default: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|
 \.png|\.svg|\.tif|\.tiff|\.wbmp$/
 
->infoContent Option: The Showcase plugin uses the Info Bar to display information about the content within the Showcase window. By setting a string of plain text or HTML in the infoContent option, the Info Bar will display that data. Alternatively, each element used with the jQuery showcase method can contain the 'showcaseInfo' property, either set with the jQuery data method or inline (e.g <img data-showcaseInfo="Image Description">).
+>infoContent Option: The Showcase plugin uses the Info Bar to display information about the content within the Showcase window. By setting a string of plain text or HTML in the infoContent option, the Info Bar will display that data. Alternatively, each element used with the jQuery showcase method can contain the 'showcaseInfo' property, either set with the jQuery data method or inline (e.g &lt;img data-showcaseInfo="Image Description"&gt;).
 
 
 ### Methods
