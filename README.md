@@ -14,8 +14,8 @@ We need the stylesheet, jQuery, and the Showcase plugin. Then we can select the 
 <script src="https://github.com/AdventCoding/jQShowcase/blob/master/jquery.showcase.js"></script>
 </head>
 <body>
-<img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e044488fe252577b2788a6ded2b4c993&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb" width="200" alt="San Francisco">
-<img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=53417780c9a34ffae5334a1d03b105a6&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb" width="200" alt="Cafe">
+<img src="/images/image1.jpg" width="200" alt="Image1...">
+<img src="/images/image2.jps" width="200" alt="Image2...">
 <script>$('img').showcase();</script>
 </body>
 ```
@@ -33,33 +33,24 @@ $('selector').showcase(options, callback);
 To control the Showcase after it has been initialized, call a method on the global Showcase object:
 
 ```js
-// The Showcase API object is attached to the global window object
 Showcase.disable();
 ```
 
 ### Options
 
 |Key|Description|Default
-|--|--|--|
 |overlayClose|If the Overlay click event should close the Showcase|false
-|--|--|--|
 |animate|Allows the Main Div to animate its position and dimensions|true
-|--|--|--|
 |width|Sizes the Showcase to the specified width|400
-|--|--|--|
 |height|Sizes the Showcase to the specified height|300
-|--|--|--|
 |navigateElements|The jQuery selector or collection to use if navigation is needed|null
-|--|--|--|
 |scaleContent|Scales some Showcase content, such as images, if the dimensions exceed the Window dimensions|false
-|--|--|--|
 |hoverControls|Gives the Showcase Controls a hover effect|false
-|--|--|--|
 |infoContent|The content for the Info Bar; see the infoContent Option below|null
-|--|--|--|
 |imageRegExp|The RegExp used to check for image content, since an <img> tag is needed|See Below
 >imageRegExp Default: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|
 \.png|\.svg|\.tif|\.tiff|\.wbmp$/
+
 >infoContent Option: The Showcase plugin uses the Info Bar to display information about the content within the Showcase window. By setting a string of plain text or HTML in the infoContent option, the Info Bar will display that data. Alternatively, each element used with the jQuery showcase method can contain the 'showcaseInfo' property, either set with the jQuery data method or inline (e.g <img data-showcaseInfo="Image Description">).
 
 
