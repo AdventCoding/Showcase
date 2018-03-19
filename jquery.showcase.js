@@ -385,7 +385,7 @@ window.Showcase = (function ($, global) {
 			if (!$.isFunction(callback)) { callback = $.noop; }
 			
 			const cnt = this.content,
-				verify = utility.checkWinDim.call(this, width, height),
+				verify = utility.checkWinDim(width, height),
 				infoBarAdjust = (this.infoEnabled) ? this.infoBarHeight / 2 : 0,
 				dim = {
 					width : verify.width,
@@ -580,11 +580,7 @@ window.Showcase = (function ($, global) {
 					
 				}.bind(this);
 			
-			if (this.infoEnabled) {
-				
-				this.infoBar.hide();
-				
-			}
+			if (this.infoEnabled) { this.infoBar.hide(); }
 			
 			// Set dimensions and show plugin
 			if (showMain === true
@@ -1038,7 +1034,7 @@ window.Showcase = (function ($, global) {
 			// Resize with width, height, callback, animate, showMain
 			this.resize(width, height, null, true, true);
 			
-			if ($.isFunction(this.callback)) { this.callback; }
+			if ($.isFunction(this.callback)) { this.callback(); }
 			
 			return true;
 			

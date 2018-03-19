@@ -42,8 +42,8 @@ Showcase.disable();
 | :---: | --- | :---: |
 | overlayClose | If the Overlay click event should close the Showcase | true |
 | animate | Allows the Main Div to animate its position and dimensions | true |
-| width | Sizes the Showcase to the specified width | 400 |
-| height | Sizes the Showcase to the specified height | 300 |
+| width | Sizes the Showcase to the specified width (can be 'auto') | 400 |
+| height | Sizes the Showcase to the specified height (can be 'auto') | 300 |
 | navigateElements | The jQuery selector or collection to use if navigation is needed | null |
 | scaleContent | Scales some Showcase content, such as images, if the dimensions exceed the Window dimensions | false |
 | hoverControls | Shows/Hides the Showcase Controls on the hover event | false |
