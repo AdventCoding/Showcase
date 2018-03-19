@@ -912,7 +912,7 @@ window.Showcase = (function ($, global) {
 					// Resize with width, height, callback, animate, showMain
 					this.resize(width, height, callback, true, true);
 					
-					if ($.isFunction(this.callback)) { this.callback; }
+					if ($.isFunction(this.callback)) { this.callback(); }
 					
 					return true;
 					
