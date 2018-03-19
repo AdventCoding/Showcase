@@ -57,7 +57,11 @@ Showcase.disable();
 
 ### Methods
 
-These methods are called from the Showcase instance on the window object, or from within a callback sent to the jQuery plugin call (e.g. this.enable()). To call the showcase plugin on a jQuery collection, see the example above.
+These methods are called from the Showcase instance on the window object, or from within a callback sent to the jQuery plugin call (e.g. this.enable()). To call the showcase plugin on a jQuery collection, see the example above. All methods, except for .content, will return the global Showcase object.
+
+### .content()
+
+Retrieves the Showcase content container (#jqShowcaseContent) as a jQuery Object.
 
 ### .enable(callback, hideMain)
 
