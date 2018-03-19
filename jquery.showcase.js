@@ -598,7 +598,10 @@ window.Showcase = (function ($, global) {
 					
 				} else {
 					
-					this.main.show();
+					this.main.css({
+						display : 'block',
+						visibility : 'visible'
+					});
 					finish();
 					
 				}
