@@ -47,6 +47,7 @@ Showcase.disable();
 | navigateElements | The jQuery selector or collection to use if navigation is needed | null |
 | scaleContent | Scales some Showcase content, such as images, if the dimensions exceed the Window dimensions | false |
 | hoverControls | Shows/Hides the Showcase Controls on the hover event | false |
+| showLoader | If the animated loading image should be displayed while content is loading | true |
 | infoContent | The content for the Info Bar; see the infoContent Option below | null |
 | imageRegExp | The RegExp used to check for image content, since an &lt;img&gt; tag is needed | See Below |
 >imageRegExp Default: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|

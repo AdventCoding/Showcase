@@ -33,6 +33,7 @@ window.Showcase = (function ($, global) {
 		navigateElements : null,
 		scaleContent : false,
 		hoverControls : false,
+		showLoader: true,
 		infoContent : null, // Can also use the jQuery .data({'showcaseInfo' : 'Place Info Here'}) on each element
 		imageRegExp : /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|\.png|\.svg|\.tif|\.tiff|\.wbmp$/
 	};
@@ -927,7 +928,7 @@ window.Showcase = (function ($, global) {
 				hash = null;
 			
 			cnt.empty();
-			this.loading.show();
+			if (this.options.showLoader) { this.loading.show(); }
 			
 			// Load content and retrieve new dimensions
 			if (exp.test(src)) {
@@ -993,7 +994,7 @@ window.Showcase = (function ($, global) {
 			let width = 0,
 				height = 0;
 			
-			this.loading.show();
+			if (this.options.showLoader) { this.loading.show(); }
 			
 			// Change content and retrieve new dimensions
 			clone.css({
