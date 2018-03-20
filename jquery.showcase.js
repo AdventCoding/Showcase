@@ -350,7 +350,9 @@ window.Showcase = (function ($, global) {
 			this.rightNav.hide();
 			this.infoBar.hide();
 			
-			if (this.curContent.is('video') || this.curContent.is('audio')) { this.curContent[0].pause(); }
+			if (this.curContent && (this.curContent.is('video') || this.curContent.is('audio'))) {
+				this.curContent[0].pause();
+			}
 			
 			if (anim) {
 				
