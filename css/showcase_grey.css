@@ -24,6 +24,7 @@
 	margin: -150px 0 0 -200px; padding: 0 0 5px 0;
 	border: 1px solid #ebebeb;
 	background: #777;
+	box-shadow: 0 2px 4px 0 #242424;
 }
 #jqShowcaseContent {
 	position: relative; display: block;
