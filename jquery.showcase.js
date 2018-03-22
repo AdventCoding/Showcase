@@ -1209,10 +1209,16 @@ window.Showcase = (function ($, global) {
 	api = {
 		
 		/**
-		 * Get the ready status of the Showcase Plugin
+		 * If the Showcase Plugin is ready to be called
 		 * @return {bool}
 		 */
-		get ready () { return !sc.busy; },
+		get ready () { return (utility.ready() && !sc.busy); },
+		
+		/**
+		 * If the Showcase is currently enabled
+		 * @return {bool}
+		 */
+		get enabled () { return sc.overlay.is(':visible'); },
 		
 		/**
 		 * Get the jaShowcaseContent container as a jQuery Object

@@ -61,7 +61,11 @@ These methods and properties are accessed from the Showcase instance on the wind
 
 ### .ready
 
-Gets the ready status of the Showcase Plugin.
+If the Showcase Plugin is ready to be called.
+
+### .enabled
+
+If the Showcase is currently enabled.
 
 ### .content()
 
