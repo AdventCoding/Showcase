@@ -1209,6 +1209,12 @@ window.Showcase = (function ($, global) {
 	api = {
 		
 		/**
+		 * Get the ready status of the Showcase Plugin
+		 * @return {bool}
+		 */
+		get ready () { return !sc.busy; },
+		
+		/**
 		 * Get the jaShowcaseContent container as a jQuery Object
 		 * @return {Object} Returns an empty jQuery collection if Showcase is not ready
 		 */

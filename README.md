@@ -55,10 +55,13 @@ Showcase.disable();
 
 >infoContent Option: The Showcase plugin uses the Info Bar to display information about the content within the Showcase window. By setting a string of plain text or HTML in the infoContent option, the Info Bar will display that data. Alternatively, each element used with the jQuery showcase method can contain the 'showcaseInfo' property, either set with the jQuery data method or inline (e.g &lt;img data-showcaseInfo="Image Description"&gt;).
 
+### Methods & Properties
 
-### Methods
+These methods and properties are accessed from the Showcase instance on the window object, or from within a callback sent to the jQuery plugin call (e.g. this.enable()). To call the showcase plugin on a jQuery collection, see the example above. All methods, except for .content, will return the global Showcase object.
 
-These methods are called from the Showcase instance on the window object, or from within a callback sent to the jQuery plugin call (e.g. this.enable()). To call the showcase plugin on a jQuery collection, see the example above. All methods, except for .content, will return the global Showcase object.
+### .ready
+
+Gets the ready status of the Showcase Plugin.
 
 ### .content()
 
