@@ -1303,7 +1303,7 @@ window.Showcase = (function ($, global) {
 		 * @param {string} event 'enable', 'disable', 'resize', or 'navigate'
 		 * @param {any} data Optional data to be passed to the handler
 		 * @param {eventListener} handler A handler for the event trigger
-		 * @return void
+		 * @return {Object} The window.Showcase API
 		 */
 		on: function (event, data, handler) {
 			
@@ -1332,13 +1332,15 @@ window.Showcase = (function ($, global) {
 				break;
 			}
 			
+			return this;
+			
 		},
 		
 		/**
 		 * Remove an event listener from the Showcase
 		 * @param {string} event 'enable', 'disable', 'resize', or 'navigate'
 		 * @param {Function} handler Optional handler used in the Showcase.on method call
-		 * @return void
+		 * @return {Object} The window.Showcase API
 		 */
 		off: function (event, handler) {
 			
@@ -1373,6 +1375,8 @@ window.Showcase = (function ($, global) {
 				errHandler(new Error(errors.EVENTOFF.msg), 'EVENTOFF');
 				break;
 			}
+			
+			return this;
 			
 		}
 		
