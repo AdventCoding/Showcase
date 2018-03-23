@@ -48,7 +48,9 @@ window.Showcase = (function ($, global) {
 		INIT : { code: 'JQS002', msg: 'Unable to initiate plugin elements based on specified jQuery object.' },
 		LOADCNT : { code: 'JQS010', msg: 'Invalid source argument for loadContent method.' },
 		SETCNT : { code: 'JQS020', msg: 'Invalid element argument for setContent method.' },
-		WINDIM : { code: 'JQS030', msg: 'Invalid dimension arguments for checkWinDim method.' }
+		WINDIM : { code: 'JQS030', msg: 'Invalid dimension arguments for checkWinDim method.' },
+		EVENTON : { code: 'JQS040', msg: 'Invalid event name for Showcase.on method.' },
+		EVENTOFF : { code: 'JQS041', msg: 'Invalid event name for Showcase.off method.' }
 	};
 	
 	/**
@@ -340,6 +342,7 @@ window.Showcase = (function ($, global) {
 					
 					this.enabled = false;
 					this.busy = false;
+					this.main.trigger('disable.showcase');
 					callback.call(this);
 					
 				}.bind(this);
@@ -1283,6 +1286,74 @@ window.Showcase = (function ($, global) {
 			
 			if (utility.ready()) { sc.navigate(direction); }
 			return this;
+			
+		},
+		
+		
+		on: function (event, data, handler) {
+			
+			if (data === undefined) { data = null; }
+			if (!$.isFunction(handler)) { handler = $.noop; }
+			
+			switch (event) {
+			//todo finish event handling
+			case 'enable':
+				sc.main.on('enable.showcase', null, data, handler);
+				break;
+				
+			case 'disable':
+				sc.main.on('disable.showcase', null, data, handler);
+				break;
+				
+			case 'resize':
+				sc.main.on('resize.showcase', null, data, handler);
+				break;
+				
+			case 'navigate':
+				sc.main.on('navigate.showcase', null, data, handler);
+				break;
+				
+			default:
+				errHandler(new Error(errors.EVENTON.msg), 'EVENTON');
+				break;
+			}
+			
+		},
+		
+		//todo finish event handling
+		off: function (event, handler) {
+			
+			const offReference = function (evt) {
+				
+				if ($.isFunction(handler)) {
+					sc.main.off(evt, null, handler);
+				} else {
+					sc.main.off(evt);
+				}
+				
+			};
+			
+			switch (event) {
+			case 'enable':
+				offReference('enable.showcase');
+				break;
+				
+			case 'disable':
+				offReference('disable.showcase');
+				break;
+				
+			case 'resize':
+				offReference('resize.showcase');
+				break;
+				
+			case 'navigate':
+				offReference('navigate.showcase');
+				break;
+				
+			default:
+				errHandler(new Error(errors.EVENTOFF.msg), 'EVENTOFF');
+				break;
+			}
 			
 		}
 		
