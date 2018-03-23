@@ -22,6 +22,7 @@ window.Showcase = (function ($, global) {
 	* @property {string|Object} navigateElements The jQuery selector or collection to use if navigation is needed
 	* @property {boolean} scaleContent Scales the Showcase content if dimensions exceed Window dimensions
 	* @property {boolean} hoverControls Gives the Showcase Controls a hover effect
+	* @property {boolean} cloneData If the data and events should be cloned for elements other than <a> and <img>
 	* @property {string} infoContent The HTML content for the Info Bar
 	* @property {RegExp} imageRegExp The image RegExp is used to check for image content
 	*/
@@ -34,6 +35,7 @@ window.Showcase = (function ($, global) {
 		scaleContent : false,
 		hoverControls : false,
 		showLoader: true,
+		cloneData: true,
 		infoContent : null, // Can also use the jQuery .data({'showcaseInfo' : 'Place Info Here'}) on each element
 		imageRegExp : /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|\.png|\.svg|\.tif|\.tiff|\.wbmp$/
 	};
@@ -989,7 +991,7 @@ window.Showcase = (function ($, global) {
 			}
 			
 			const cnt = this.content,
-				clone = elem.clone();
+				clone = elem.clone(this.options.cloneData);
 			
 			let width = 0,
 				height = 0;
