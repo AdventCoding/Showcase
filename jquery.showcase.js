@@ -220,6 +220,7 @@ window.Showcase = (function ($, global) {
 					this.loading.hide();
 					this.content.show();
 					
+					this.main.trigger('enable.showcase');
 					callback.call(this);
 					
 				}.bind(this);
@@ -582,6 +583,7 @@ window.Showcase = (function ($, global) {
 					
 					this.busy = false;
 					this.loading.hide();
+					this.main.trigger('resize.showcase');
 					callback.call(this);
 					
 					return true;
@@ -705,6 +707,7 @@ window.Showcase = (function ($, global) {
 			
 			if (this.options.hoverControls) { this.infoBar.hide(); }
 			
+			this.main.trigger('navigate.showcase');
 			this.loadByType(elem);
 			
 			return true;
@@ -1289,14 +1292,25 @@ window.Showcase = (function ($, global) {
 			
 		},
 		
-		
+		/**
+		 * Callback for event listening
+		 * @callback eventListener
+		 * @param {Object} event The jQuery.Event object
+		 * @param {any} data The data passed in the Showcase.on method call
+		 */
+		/**
+		 * Add an event listener to the Showcase
+		 * @param {string} event 'enable', 'disable', 'resize', or 'navigate'
+		 * @param {any} data Optional data to be passed to the handler
+		 * @param {eventListener} handler A handler for the event trigger
+		 * @return void
+		 */
 		on: function (event, data, handler) {
 			
 			if (data === undefined) { data = null; }
 			if (!$.isFunction(handler)) { handler = $.noop; }
 			
 			switch (event) {
-			//todo finish event handling
 			case 'enable':
 				sc.main.on('enable.showcase', null, data, handler);
 				break;
@@ -1320,7 +1334,12 @@ window.Showcase = (function ($, global) {
 			
 		},
 		
-		//todo finish event handling
+		/**
+		 * Remove an event listener from the Showcase
+		 * @param {string} event 'enable', 'disable', 'resize', or 'navigate'
+		 * @param {Function} handler Optional handler used in the Showcase.on method call
+		 * @return void
+		 */
 		off: function (event, handler) {
 			
 			const offReference = function (evt) {

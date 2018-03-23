@@ -98,6 +98,19 @@ Navigates between the Showcase elements.
 Note: In order to navigate through different elements, the navigateElements option must be set to a jQuery selector string or a jQuery collection object.
  - direction : The reverse '<' or forward '>' direction
 
+### .on(event, data, handler)
+
+Adds an event listener to the Showcase.
+ - event : 'enable', 'disable', 'resize', or 'navigate'
+ - data : Optional data to be passed to the handler
+ - handler : A handler for the event trigger / Receives The jQuery.Event object, and the data passed in the .on() Showcase method call
+
+### .off(event, handler)
+
+Removes an event listener from the Showcase.
+ - event : 'enable', 'disable', 'resize', or 'navigate'
+ - handler : The handler that was passed in the .on() Showcase method call, if removing a specific handler
+
 ## License
 
 [MIT](https://github.com/AdventCoding/jQShowcase/blob/master/LICENSE)
