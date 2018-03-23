@@ -48,7 +48,7 @@ Showcase.disable();
 | scaleContent | Scales some Showcase content, such as images, if the dimensions exceed the Window dimensions | false |
 | hoverControls | Shows/Hides the Showcase Controls on the hover event | false |
 | showLoader | If the animated loading image should be displayed while content is loading | true |
-| cloneData | If data and events should be cloned for the Showcase element (does not apply for &lt;a&gt; or &lt;img&gt;) | true |
+| cloneData | If data and events should be cloned for the Showcase element (does not apply for &lt;a&gt; or &lt;img&gt; elements) | true |
 | infoContent | The content for the Info Bar; see the infoContent Option below | null |
 | imageRegExp | The RegExp used to check for image content, since an &lt;img&gt; tag is needed | See Below |
 >imageRegExp Default: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|
@@ -58,7 +58,7 @@ Showcase.disable();
 
 ### Methods & Properties
 
-These methods and properties are accessed from the Showcase instance on the window object, or from within a callback sent to the jQuery plugin call (e.g. this.enable()). To call the showcase plugin on a jQuery collection, see the example above. All methods, except for .content, will return the global Showcase object.
+These methods and properties are accessed from the Showcase instance on the window object (e.g. window.Showcase.ready), or from within a callback sent to the jQuery plugin call (e.g. this.disable()). To initiate the showcase plugin on a jQuery collection, see the example above. All methods, except for .content(), will return the global Showcase object.
 
 ### .ready
 
