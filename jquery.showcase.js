@@ -1048,7 +1048,12 @@ window.Showcase = (function ($, global) {
 			// Resize with width, height, callback, animate, showMain
 			this.resize(width, height, null, true, true);
 			
-			clone.find('input').eq(0).focus();
+			if (clone.find('input').length > 0) {
+				clone.find('input').eq(0).focus();
+			} else if (clone.find('textarea').length > 0) {
+				clone.find('textarea').eq(0).focus();
+			}
+			
 			if ($.isFunction(this.callback)) { this.callback(); }
 			
 			return true;
