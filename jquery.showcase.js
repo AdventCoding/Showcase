@@ -188,7 +188,7 @@ window.Showcase = (function ($, global) {
 		 * @param {boolean} hideMain If the Main Div should not be displayed
 		 * @return {boolean}
 		 */
-		enable : function (callback, hideMain) {
+		enable: function (callback, hideMain) {
 			
 			if (this.busy) { return false; }
 			if (!$.isFunction(callback)) { callback = $.noop; }
@@ -255,7 +255,7 @@ window.Showcase = (function ($, global) {
 			if (this.options.hoverControls) {
 				
 				this.main.on({
-					mouseenter : function (e) {
+					mouseenter: function (e) {
 						
 						e.preventDefault();
 						
@@ -279,7 +279,7 @@ window.Showcase = (function ($, global) {
 						
 					}.bind(this),
 					
-					mouseleave : function (e) {
+					mouseleave: function (e) {
 						
 						e.preventDefault();
 						
@@ -333,7 +333,7 @@ window.Showcase = (function ($, global) {
 		 * @param {Function} callback A function to execute when Showcase is disabled
 		 * @return {boolean}
 		 */
-		disable : function (callback) {
+		disable: function (callback) {
 			
 			if (!this.enabled) { return false; }
 			if (!$.isFunction(callback)) { callback = $.noop; }
@@ -385,7 +385,7 @@ window.Showcase = (function ($, global) {
 		 * @param {boolean} showMain If the Main Div needs to be displayed
 		 * @return {boolean}
 		 */
-		resize : function (width, height, callback, animate, showMain) {
+		resize: function (width, height, callback, animate, showMain) {
 			
 			width = (typeof width === 'number') ? width : global.parseInt(width, 10) || 0;
 			height = (typeof height === 'number') ? height : global.parseInt(height, 10) || 0;
@@ -636,7 +636,7 @@ window.Showcase = (function ($, global) {
 		 * @param {string} direction The reverse '<' or forward '>' direction
 		 * @return {boolean}
 		 */
-		navigate : function (direction) {
+		navigate: function (direction) {
 			
 			if (this.enabled === false
 				|| this.navEnabled === false
@@ -843,7 +843,7 @@ window.Showcase = (function ($, global) {
 		 * @param {Object} elem The target element
 		 * @return {boolean}
 		 */
-		loadByType : function (elem) {
+		loadByType: function (elem) {
 			
 			let src = null;
 			
@@ -871,7 +871,7 @@ window.Showcase = (function ($, global) {
 		 * @param {string} src The URL string to load
 		 * @return {boolean}
 		 */
-		loadContent : function (src) {
+		loadContent: function (src) {
 			
 			if (typeof src !== 'string') {
 				
@@ -984,7 +984,7 @@ window.Showcase = (function ($, global) {
 		 * @param {Object} elem The element(s) to append to the Showcase
 		 * @return {boolean}
 		 */
-		setContent : function (elem) {
+		setContent: function (elem) {
 			
 			if (!elem
 				|| typeof elem !== 'object'
@@ -1048,6 +1048,7 @@ window.Showcase = (function ($, global) {
 			// Resize with width, height, callback, animate, showMain
 			this.resize(width, height, null, true, true);
 			
+			clone.find('input').eq(0).focus();
 			if ($.isFunction(this.callback)) { this.callback(); }
 			
 			return true;
@@ -1058,7 +1059,7 @@ window.Showcase = (function ($, global) {
 		 * Sets the vertical and horizontal buffer sizes around the Showcase window
 		 * @return {boolean}
 		 */
-		setBuffers : function () {
+		setBuffers: function () {
 			
 			if (!this.leftNav
 				|| !this.infoBar
@@ -1080,7 +1081,7 @@ window.Showcase = (function ($, global) {
 		 * Used for the Window resize event to check the Showcase dimensions
 		 * @return {boolean}
 		 */
-		onResize : function () {
+		onResize: function () {
 			
 			const dim = utility.getWinDim(),
 				mainWidth = this.main.outerWidth() + this.hBuffer,
@@ -1389,7 +1390,7 @@ window.Showcase = (function ($, global) {
 		 * Clears the timer used for Showcase methods
 		 * @return {boolean}
 		 */
-		clearTimer : function () {
+		clearTimer: function () {
 			
 			if (timer !== null) {
 				
@@ -1408,7 +1409,7 @@ window.Showcase = (function ($, global) {
 		 * @property {number} width The width of the Window
 		 * @property {number} height The height of the Window
 		 */
-		getWinDim : function () {
+		getWinDim: function () {
 			
 			let dim = {};
 			
@@ -1444,7 +1445,7 @@ window.Showcase = (function ($, global) {
 		 * @property {number} width A verified Window width
 		 * @property {number} height A verified Window height
 		 */
-		checkWinDim : function (width, height) {
+		checkWinDim: function (width, height) {
 			
 			if (typeof width !== 'number'
 				|| typeof height !== 'number') {
@@ -1481,7 +1482,7 @@ window.Showcase = (function ($, global) {
 		 * Sets a standard mode for the Showcase to display messages in
 		 * @return {boolean}
 		 */
-		setShowcaseStandard : function () {
+		setShowcaseStandard: function () {
 			
 			if (utility.ready()) {
 				
