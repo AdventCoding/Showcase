@@ -541,35 +541,21 @@ window.Showcase = (function ($, global) {
 						
 					} else {
 						
-						// No scaling needed for content
+						// No down-sizing needed for content
 						this.mainScale = false;
-						cnt.css({
-							width : 'auto',
-							height : 'auto',
-							overflow : 'hidden'
-						});
 						
-						// Check if content needs an 'auto' overflow
-						if (global.Math.ceil(cnt.height()) > mainHeight
-							|| global.Math.ceil(cnt.width()) > mainWidth) {
-							
+						// Check if content needs overflow
+						if (global.Math.ceil(cnt.height()) > mainHeight) {
 							cnt.css({
-								width : mainWidth,
-								height : mainHeight,
-								overflow : 'auto'
+								height: mainHeight,
+								overflow: 'auto'
 							});
-							
 						}
-						
-						if (this.curContent) {
-							
-							this.curContent.css({
-								width : this.curContentOW,
-								height : this.curContentOH,
-								margin : this.curContentOM,
-								padding : this.curContentOP
+						if (global.Math.ceil(cnt.width()) > mainWidth) {
+							cnt.css({
+								width: mainWidth,
+								overflow: 'auto'
 							});
-							
 						}
 						
 					}
@@ -914,15 +900,6 @@ window.Showcase = (function ($, global) {
 					this.mainOriginWidth = width;
 					this.mainOriginHeight = height;
 					
-					if (this.curContent) {
-						
-						this.curContentOW = this.curContent.width();
-						this.curContentOH = this.curContent.height();
-						this.curContentOM = this.curContent.css('margin');
-						this.curContentOP = this.curContent.css('padding');
-						
-					}
-					
 					// Resize with width, height, callback, animate, showMain
 					this.resize(width, height, callback, true, true);
 					
@@ -1007,37 +984,32 @@ window.Showcase = (function ($, global) {
 			// Change content and retrieve new dimensions
 			clone.css({
 				display : 'block',
-				visibility : 'visible'
+				visibility : 'visible',
+				margin: '0 auto'
 			});
 			
 			cnt.empty().append(clone);
 			this.curContent = clone;
-			this.curContentOW = clone.width();
-			this.curContentOH = clone.height();
-			this.curContentOM = clone.css('margin');
-			this.curContentOP = clone.css('padding');
-			width = this.options.width || cnt.outerWidth(true);
-			height = this.options.height || cnt.outerHeight(true);
+			width = this.options.width || clone.outerWidth(true);
+			height = this.options.height || clone.outerHeight(true);
 			
 			if (width === 'auto') {
 				
+				width = clone.outerWidth(true);
 				this.main.css({
-					width : 'auto',
+					width : width,
 					visibility : 'hidden'
 				});
-				cnt.css('width', clone.outerWidth(true));
-				width = cnt.outerWidth(true);
 				
 			}
 			
 			if (height === 'auto') {
 				
+				height = clone.outerHeight(true);
 				this.main.css({
-					height : 'auto',
+					height : height,
 					visibility : 'hidden'
 				});
-				cnt.css('height', clone.outerHeight(true));
-				height = cnt.outerHeight(true);
 				
 			}
 			
