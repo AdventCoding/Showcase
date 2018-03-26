@@ -19,7 +19,6 @@
 #jqShowcaseMain {
 	z-index: 998;
 	box-sizing: content-box;
-	overflow: hidden;
 	position: fixed; display: none;
 	top: 50%; left: 50%;
 	width: 400px; height: 300px;
