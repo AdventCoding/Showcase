@@ -475,8 +475,8 @@ window.Showcase = (function ($, global) {
 					this.loading.hide();
 					
 					// Cache main Showcase inner dimensions
-					mainWidth = this.main.width();
-					mainHeight = this.main.height();
+					mainWidth = global.Math.ceil(this.main.width());
+					mainHeight = global.Math.ceil(this.main.height());
 					
 					// Set Content dimensions if Showcase dimensions exceed Window dimensions
 					if (verify.width !== width
@@ -550,8 +550,8 @@ window.Showcase = (function ($, global) {
 						});
 						
 						// Check if content needs an 'auto' overflow
-						if (cnt.height() > mainHeight
-							|| cnt.width() > mainWidth) {
+						if (global.Math.ceil(cnt.height()) > mainHeight
+							|| global.Math.ceil(cnt.width()) > mainWidth) {
 							
 							cnt.css({
 								width : mainWidth,
@@ -1025,7 +1025,7 @@ window.Showcase = (function ($, global) {
 					width : 'auto',
 					visibility : 'hidden'
 				});
-				
+				cnt.css('width', clone.outerWidth(true));
 				width = cnt.outerWidth(true);
 				
 			}
@@ -1036,7 +1036,7 @@ window.Showcase = (function ($, global) {
 					height : 'auto',
 					visibility : 'hidden'
 				});
-				
+				cnt.css('height', clone.outerHeight(true));
 				height = cnt.outerHeight(true);
 				
 			}
@@ -1048,6 +1048,7 @@ window.Showcase = (function ($, global) {
 			// Resize with width, height, callback, animate, showMain
 			this.resize(width, height, null, true, true);
 			
+			// Set focus to first input or textarea element
 			if (clone.find('input').length > 0) {
 				clone.find('input').eq(0).focus();
 			} else if (clone.find('textarea').length > 0) {

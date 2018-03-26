@@ -3,6 +3,10 @@
 The jQuery Showcase Plugin allows HTML data to be displayed in a modal window. The plugin attempts to intelligently guess the type of content that will be displayed by looking for images, links, AJAX content, and other general HTML content.
 >Requires jQuery 1.7+
 
+## Important
+
+The CSS box-sizing property can cause issues with the sizing of the content used in the Showcase window. It's advisable to set this property to 'content-box' for any element that is used in the Showcase.
+
 ## Example
 
 We need the stylesheet, jQuery, and the Showcase plugin. Then we can select the images with jQuery and initiate the Showcase plugin, which will display the first image in the collection.
