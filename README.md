@@ -5,7 +5,7 @@ The jQuery Showcase Plugin allows HTML data to be displayed in a modal window. T
 
 ## Important
 
-The CSS box-sizing property can cause issues with the sizing of the content used in the Showcase window. It's advisable to set the property to 'border-box' for any element that is used in the Showcase.
+The CSS box-sizing property can cause issues with the sizing of the content used in the Showcase window. It's advisable to set the property to 'border-box' for the main element that is used in the Showcase.
 
 ## Example
 
