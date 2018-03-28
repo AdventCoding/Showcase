@@ -119,4 +119,4 @@ Removes an event listener from the Showcase.
 
 ## License
 
-[MIT](https://github.com/AdventCoding/jQShowcase/blob/master/LICENSE)
+[MIT](https://github.com/AdventCoding/Showcase/blob/master/LICENSE)
