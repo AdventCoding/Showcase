@@ -37,7 +37,13 @@ window.Showcase = (function ($, global) {
 		showLoader: true,
 		cloneData: true,
 		infoContent : null, // Can also use the jQuery .data({'showcaseInfo' : 'Place Info Here'}) on each element
-		imageRegExp : /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|\.png|\.svg|\.tif|\.tiff|\.wbmp$/
+		imageRegExp : /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|\.png|\.svg|\.tif|\.tiff|\.wbmp$/,
+		titles: {
+			overlay: 'Click to Close',
+			close: 'Close',
+			leftNav: 'Navigate Left',
+			rightNav: 'Navigate Right'
+		}
 	};
 	
 	/** The error constants for error handling */
@@ -230,7 +236,6 @@ window.Showcase = (function ($, global) {
 			
 			if (this.options.overlayClose) {
 				
-				this.overlay.attr('title', 'Click to Close');
 				this.overlay.on('click', function (e) {
 					
 					e.preventDefault();
@@ -239,10 +244,6 @@ window.Showcase = (function ($, global) {
 					this.disable();
 					
 				}.bind(this));
-				
-			} else {
-				
-				this.overlay.attr('title', '');
 				
 			}
 			
@@ -728,6 +729,9 @@ window.Showcase = (function ($, global) {
 			this.callback = callback.bind(global.Showcase);
 			this.curContent = null;
 			
+			// Check if title changes are needed
+			if (options.titles) { this.setTitles(); }
+			
 			// Check if navigation is needed
 			if (opts.navigateElements) {
 				
@@ -1077,6 +1081,24 @@ window.Showcase = (function ($, global) {
 			}
 			
 			return true;
+			
+		},
+		
+		/**
+		 * Set the Titles for the Showcase Elements
+		 * @return void
+		 */
+		setTitles: function () {
+			
+			const titles = this.options.titles,
+				keys = Object.keys(titles);
+			
+			keys.forEach(function (k) {
+				
+				// The key is the same as the element name
+				if (this[k]) { this[k].attr('title', titles[k]); }
+				
+			}.bind(this));
 			
 		}
 		

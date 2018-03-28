@@ -55,8 +55,10 @@ Showcase.disable();
 | cloneData | If data and events should be cloned for the Showcase element (does not apply for &lt;a&gt; or &lt;img&gt; elements) | true |
 | infoContent | The content for the Info Bar; see the infoContent Option below | null |
 | imageRegExp | The RegExp used to check for image content, since an &lt;img&gt; tag is needed | See Below |
+| titles | The titles for the Showcase Overlay, Close, Left Nav Arrow, and Right Nav Arrow | See Below |
 >imageRegExp Default: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|
 \.png|\.svg|\.tif|\.tiff|\.wbmp$/
+>titles Default: { overlay: 'Click to Close', close: 'Close', leftNav: 'Navigate Left', rightNav: 'Navigate Right' }
 
 >infoContent Option: The Showcase plugin uses the Info Bar to display information about the content within the Showcase window. By setting a string of plain text or HTML in the infoContent option, the Info Bar will display that data. Alternatively, each element used with the jQuery showcase method can contain the 'showcaseInfo' property, either set with the jQuery data method or inline (e.g &lt;img data-showcaseInfo="Image Description"&gt;).
 
