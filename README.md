@@ -53,9 +53,9 @@ Showcase.disable();
 | hoverControls | Shows/Hides the Showcase Controls on the hover event | false |
 | showLoader | If the animated loading image should be displayed while content is loading | true |
 | cloneData | If data and events should be cloned for the Showcase element (does not apply for &lt;a&gt; or &lt;img&gt; elements) | true |
-| infoContent | The content for the Info Bar; see the infoContent Option below | null |
 | imageRegExp | The RegExp used to check for image content, since an &lt;img&gt; tag is needed | See Below |
 | titles | The titles for the Showcase Overlay, Close, Left Nav Arrow, and Right Nav Arrow | See Below |
+| infoContent | The content for the Info Bar; see the infoContent Option below | null |
 >imageRegExp Default: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|
 \.png|\.svg|\.tif|\.tiff|\.wbmp$/
 

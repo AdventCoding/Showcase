@@ -36,14 +36,16 @@ window.Showcase = (function ($, global) {
 		hoverControls : false,
 		showLoader: true,
 		cloneData: true,
-		infoContent : null, // Can also use the jQuery .data({'showcaseInfo' : 'Place Info Here'}) on each element
 		imageRegExp : /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|\.png|\.svg|\.tif|\.tiff|\.wbmp$/,
 		titles: {
 			overlay: 'Click to Close',
 			close: 'Close',
 			leftNav: 'Navigate Left',
 			rightNav: 'Navigate Right'
-		}
+		},
+		
+		// Can also use the jQuery .data({'showcaseInfo' : 'Place Info Here'}) on each element
+		infoContent : null
 	};
 	
 	/** The error constants for error handling */
