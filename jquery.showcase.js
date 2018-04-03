@@ -12,6 +12,8 @@
  */
 window.Showcase = (function ($, global) {
 	
+	const debug = false;
+	
 	/**
 	* The Default Options
 	* @type {Object}
@@ -96,8 +98,7 @@ window.Showcase = (function ($, global) {
 		
 	};
 	
-	let debug = true, // Throws an error if in debug mode
-		sc = {}, // The private Showcase instance
+	let sc = {}, // The private Showcase instance
 		engine = {}, // The main Showcase Engine
 		Showcase = {}, // The Showcase constructor function
 		api = {}, // The Showcase API methods for window.Showcase
