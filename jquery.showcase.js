@@ -1,3 +1,10 @@
+/*!
+ * jQuery Showcase Plugin
+ * Author: Michael S. Howard
+ * Email: codingadvent@gmail.com
+ * License: MIT
+ */
+
 /*global jQuery*/
 'use strict'; // ECMAScript 5 Strict Mode
 
