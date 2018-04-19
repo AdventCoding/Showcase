@@ -13,13 +13,13 @@ We need the stylesheet, jQuery, and the Showcase plugin. Then we can select the 
 
 ```html
 <head>
-<link rel="stylesheet" href="https://github.com/AdventCoding/Showcase/blob/master/css/showcase_white.css">
+<link rel="stylesheet" href="https://github.com/AdventCoding/Showcase/blob/master/css/jquery.showcase.light.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://github.com/AdventCoding/Showcase/blob/master/jquery.showcase.js"></script>
 </head>
 <body>
 <img src="/images/image1.jpg" width="200" alt="Image1...">
-<img src="/images/image2.jps" width="200" alt="Image2...">
+<img src="/images/image2.jpg" width="200" alt="Image2...">
 <script>$('img').showcase();</script>
 </body>
 ```

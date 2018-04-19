@@ -940,7 +940,7 @@ window.Showcase = (function ($, global) {
 				img = $('<img src="' + src + '" alt="" />')
 					.hide()
 					.appendTo(cnt)
-					.load(function () {
+					.load(src, null, function () {
 						
 						cnt.width(img.width());
 						cnt.height(img.height());
@@ -962,7 +962,7 @@ window.Showcase = (function ($, global) {
 				}
 				
 				// Load URL into content area
-				cnt.load(src, finish);
+				cnt.load(src, null, finish);
 				
 			}
 			
