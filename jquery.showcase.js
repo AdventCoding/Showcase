@@ -176,6 +176,7 @@ window.Showcase = (function ($, global) {
 		infoBarCnt : null,
 		hExtra : 0,
 		vExtra : 0,
+		mainBorder : 0,
 		
 		// Instance Elements/Properties
 		options : null,
@@ -415,27 +416,11 @@ window.Showcase = (function ($, global) {
 				},
 				finish = function () {
 					
-					const originWidth = this.mainOriginWidth,
-						originHeight = this.mainOriginHeight,
-						alterWidth = function () {
-							
-							if (mainWidth < originWidth / 2) {
-								
-								// Content width is lower than 50% of its original size
-								cnt.css({overflow : 'auto'});
-								this.curContent.css({
-									width : global.Math.floor(originWidth / 2),
-									height : 'auto',
-									top : '50%'
-								});
-								
-								return true;
-								
-							}
+					const alterWidth = function () {
 							
 							cnt.css({'overflow' : 'hidden'});
 							this.curContent.css({
-								width : mainWidth - 5,
+								width : mainWidth - this.mainBorder,
 								height : 'auto',
 								top : '50%'
 							});
@@ -450,25 +435,10 @@ window.Showcase = (function ($, global) {
 						}.bind(this),
 						alterHeight = function () {
 							
-							if (mainHeight < originHeight / 2) {
-								
-								// Content height is lower than 50% of its original size
-								cnt.css({overflow : 'auto'});
-								this.curContent.css({
-									width : 'auto',
-									height : global.Math.floor(originHeight / 2),
-									top : 0,
-									marginTop : 0
-								});
-								
-								return true;
-								
-							}
-							
 							cnt.css({overflow : 'hidden'});
 							this.curContent.css({
 								width : 'auto',
-								height : mainHeight - 5,
+								height : mainHeight - this.mainBorder,
 								top : 0,
 								marginTop : 0
 							});
@@ -1135,6 +1105,7 @@ window.Showcase = (function ($, global) {
 		this.infoBar = $('<div id="jqShowcaseInfo"><div></div></div>', doc).appendTo(this.main);
 		this.infoBarCnt = this.infoBar.find('div');
 		body.append(this.loading, this.overlay, this.main);
+		this.mainBorder = parseInt(this.main.css('borderLeft')) || 0 + parseInt(this.main.css('borderRight')) || 0;
 		
 		// Create Event Handlers
 		$(doc).on('keydown.showcase', function (e) {
