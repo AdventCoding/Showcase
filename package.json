@@ -1,0 +1,34 @@
+{
+  "name": "jqshowcase",
+  "version": "1.0.0",
+  "description": "The jQuery Showcase Plugin makes it easy to display content in a modal window.",
+  "main": "jquery.showcase.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdventCoding/Showcase.git"
+  },
+  "keywords": [
+    "alert",
+    "confirm",
+    "data",
+    "display",
+    "ecosystem:jquery",
+    "jquery-plugin",
+    "modal",
+    "prompt",
+    "showcase",
+    "visual"
+  ],
+  "author": "Michael (https://github.com/AdventCoding/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AdventCoding/Showcase/issues"
+  },
+  "homepage": "https://github.com/AdventCoding/Showcase#readme",
+  "dependencies": {
+    "jquery": ">=3.0"
+  }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>jQuery Showcase Example</title>
+	<link href="css/jquery.showcase.light.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="jquery.showcase.js"></script>
+	<script src="http://www.youtube.com/iframe_api"></script>
+	<style>
+		a {
+			text-decoration: none;
+			color: #394f8f;
+		}
+		main {
+			margin: 0 auto;
+			max-width: 40rem;
+			text-align: center;
+		}
+		main .box {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin: 0 auto;
+		}
+		main img, main video, main .popup {
+			margin: 0.2rem;
+			border: 1px solid black;
+			width: 200px;
+			height: 150px;
+			object-fit: cover;
+		}
+		main .showcase {
+			display: block;
+			cursor: pointer;
+		}
+		main .media {
+			max-width: 210px;
+		}
+		main .data {
+			border: 1px solid gray;
+			padding: 0.5rem 1rem;
+		}
+		main .data:hover {
+			background: #ececec;
+		}
+		div[data-type="alert"]:hover {
+			background: #f18d2f;
+		}
+		div[data-type="confirm"]:hover {
+			background: #2cb671;
+		}
+		div[data-type="prompt"]:hover {
+			background: #e3f542;
+		}
+		#yt-player {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1><a href="https://unsplash.com">Showcase Images:</a></h1>
+		<div class="box images">
+			<img class="showcase" alt="Beauty of Nature" src="https://images.unsplash.com/photo-1446292532430-3e76f6ab6444?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1b7369f413e3a8640aa00d97f46e26f8&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb">
+			<img class="showcase" alt="Forest Haven" src="https://images.unsplash.com/photo-1455218873509-8097305ee378?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3ac55173e7081e90ac500bb24da47a91&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb">
+			<img class="showcase" alt="Mountain Cabin" src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a14ca13b83f7bce82764a45d13576418&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb">
+			<img class="showcase" alt="Cavern Sky" src="https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2b76b1e6da83c1a0f59eebaa481e12aa&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb">
+			<img class="showcase" alt="Brilliant Flower" src="https://images.unsplash.com/photo-1507290439931-a861b5a38200?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4e49f0b66341702171b119d4578a05ff&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb">
+			<img class="showcase" alt="Waterfall Brook" src="https://images.unsplash.com/photo-1524396319428-02eba035db6e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bd08acf0645f0bc73aa3210f4c8fb95e&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb">
+		</div>
+		<h1><a href="https://videos.pexels.com/">Showcase Videos:</a></h1>
+		<div class="box media">
+			<video class="showcase" poster="http://oi63.tinypic.com/kcm8uc.jpg"><source src="http://cdn.rawgit.com/freerange/video-test/gh-pages/videos/oceans-clip.mp4" type="video/mp4"></source></video>
+			<h2>Youtube:</h2>
+			<img class="showcase youtube" src="http://oi67.tinypic.com/jskg84.jpg">
+		</div>
+		<h1>Showcase Data:</h1>
+		<div class="showcase data html"><p>HTML Data</p></div>
+		<a class="showcase data" href="https://cdn.rawgit.com/samdutton/simpl/gh-pages/promise/index.html#container"><p>A Linked Document</p></a>
+		<a class="showcase data" href="https://jsonplaceholder.typicode.com/photos/1"><p>JSON Data</p></a>
+		<h1>Showcase Popups</h1>
+		<div class="box">
+			<div class="showcase popup" data-type="alert"><p>Alert</p></div>
+			<div class="showcase popup" data-type="confirm"><p>Confirm</p></div>
+			<div class="showcase popup" data-type="prompt"><p>Prompt</p></div>
+		</div>
+		<iframe id="yt-player" width="560" height="315" src="http://www.youtube.com/embed/_jHpnb-QmTA?enablejsapi=1" frameborder="0"></iframe>
+	</main>
+	<script>
+		
+		let ytReady = false,
+			timer = null,
+			player = null;
+		
+		// YouTube Video API
+		function onYouTubeIframeAPIReady() {
+			player = new YT.Player('yt-player', {
+				height: '560',
+				width: '315',
+				videoId: '_jHpnb-QmTA',
+				origin: 'http://www.youtube.com',
+				events: {
+					'onReady': () => { ytReady = true; },
+				}
+			});
+		}
+		
+		$(() => {
+			
+			const images = $('.images img.showcase').each(function () {
+					
+					// Copy image alt attribute for Showcase Info Box
+					const elem = $(this);
+					elem.attr('data-showcase-info', elem.attr('alt'));
+					
+			 	}),
+				video = $('video.showcase').clone().prop('controls', true),
+				youtube = $('#yt-player'),
+				data = { width: 400 };
+			
+			// Images
+			$('.images img.showcase').on('click', function () {
+				
+				images.showcase({
+					currentIndex: images.index(this),
+				});
+				
+			});
+			
+			// Videos
+			$('video.showcase').on('click', function () {
+				
+				// Check if video is already Showcased
+				if (Showcase.content[0]
+					&& Showcase.content[0].currentSrc === video[0].currentSrc) {
+					Showcase.enable();
+				} else {
+					video.showcase();
+				}
+				
+			});
+			
+			// Pause YouTube video on Showcase disable
+			Showcase.on('disable', () => { player.pauseVideo(); })
+			
+			$('.youtube').on('click', function () {
+				
+				const opts = {
+						width: 560,
+						height: 315,
+						forceScaling: true,
+					};
+				
+				if (ytReady) {
+					
+					youtube.showcase(opts);
+					
+				} else {
+					
+					// Showcase video with a Promise when video is ready
+					opts.promise = new Promise((resolve, reject) => {
+						
+						let tries = 0,
+							clear = () => {
+								clearInterval(timer);
+								timer = null;
+							};
+						
+						clear();
+						timer = setInterval(() => {
+							
+							tries += 1;
+							if (ytReady) {
+								
+								// Video is ready
+								resolve();
+								
+							} else if (tries > 10) {
+								
+								// Too many attempts to load video
+								clear();
+								reject('Failed to load video.');
+								
+							}
+							
+						}, 1000);
+						
+					});
+					youtube.showcase(opts);
+					
+				}
+				
+			});
+			
+			// Data
+			$('.html').on('click', function () {
+				
+				$('<div><h3>Document Ipsum</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vestibulum dui cursus vestibulum vehicula. Suspendisse commodo fringilla erat, sit amet mattis justo finibus eget.</p><p>Vestibulum pulvinar facilisis elit ac laoreet. Morbi vel felis sed neque tincidunt venenatis a id tortor. Nulla mauris elit, ornare eget risus ut, aliquet hendrerit urna. Phasellus sapien lectus, efficitur a aliquet sit amet, vestibulum a arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>')
+					.showcase(data);
+				
+			});
+			$('a.showcase').on('click', function (e) {
+				
+				e.preventDefault();
+				$(this).showcase(data);
+				
+			});
+			
+			// Popups
+			$('.popup').on('click', function () {
+				
+				switch ($(this).data('type')) {
+				case 'alert':
+					Showcase.alert('Have a blessed day!');
+					break;
+				case 'confirm':
+					Showcase.confirm('Do you like jQuery?', ['YES', 'NO'], function (res) {
+						
+						if (res === true) {
+							Showcase.alert('Awesome!', null);
+						} else {
+							Showcase.alert('To each their own.', null);
+						}
+						
+					});
+					break;
+				case 'prompt':
+					Showcase.prompt('What is your name?', 'OK', $('<textarea>Test</textarea>'), function (res) {
+						
+						Showcase.alert(`You entered: <br>${$('<p></p>').text(res).html()}`, null);
+						
+					});
+					break;
+				}
+				
+			});
+			
+		});
+		
+	</script>
+</body>
+</html>
