@@ -1,13 +1,14 @@
 # jQuery Showcase
 
-The jQuery Showcase Plugin makes it easy to display content in a modal window. The plugin attempts to intelligently guess the type of content that will be displayed by looking for images, links, AJAX content, or other general HTML content.
+The jQuery Showcase Plugin makes it easy to display content in a modal window. The plugin attempts to intelligently guess the type of content that will be displayed by looking for images, media, links, or other general HTML content.
 >Requires jQuery 3.0+
+
 >Important This Plugin uses features that are not supported by any Internet Explorer version.
 
 ## Example
 
 See the example.html file for more details.
->[Codepen Example]()
+>[Codepen Example](https://codepen.io/adventcoding/full/OZZQMq/)
 
 ## API
 
