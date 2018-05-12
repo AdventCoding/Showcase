@@ -72,7 +72,7 @@
 		</div>
 		<h1><a href="https://videos.pexels.com/">Showcase Videos:</a></h1>
 		<div class="box media">
-			<video class="showcase" poster="http://oi63.tinypic.com/kcm8uc.jpg"><source src="http://cdn.rawgit.com/freerange/video-test/gh-pages/videos/oceans-clip.mp4" type="video/mp4"></source></video>
+			<video class="showcase" poster="http://oi63.tinypic.com/kcm8uc.jpg"><source src="http://cdn.rawgit.com/freerange/video-test/gh-pages/videos/oceans-clip.mp4" type="video/mp4"></video>
 			<h2>Youtube:</h2>
 			<img class="showcase youtube" src="http://oi67.tinypic.com/jskg84.jpg">
 		</div>
@@ -143,7 +143,15 @@
 			});
 			
 			// Pause YouTube video on Showcase disable
-			Showcase.on('disable', () => { player.pauseVideo(); })
+			Showcase.on('disable', () => {
+				
+				try {
+					player.pauseVideo();
+				} catch (e) {
+					console.log(e.message);
+				}
+				
+			});
 			
 			$('.youtube').on('click', function () {
 				
@@ -227,7 +235,7 @@
 					});
 					break;
 				case 'prompt':
-					Showcase.prompt('What is your name?', 'OK', $('<textarea>Test</textarea>'), function (res) {
+					Showcase.prompt('What is your name?', 'OK', $('<textarea></textarea>'), function (res) {
 						
 						Showcase.alert(`You entered: <br>${$('<p></p>').text(res).html()}`, null);
 						

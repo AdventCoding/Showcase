@@ -116,14 +116,10 @@ window.Showcase = (($, global) => {
 	
 	/** Button Icons */
 	const icons = {
-		close: `<div title="Close"><svg class="jqShowcaseIcon" viewBox="0 0 32 32">X
-			<use xlink:href="{path}#jqShowcaseX"></use></svg><div>`,
-		left: `<div title="Navigate Left"><svg class="jqShowcaseIcon" viewBox="0 0 20 20">&lt;
-			<use xlink:href="{path}#jqShowcaseLeft"></use></svg></div>`,
-		right: `<div title="Navigate Right"><svg class="jqShowcaseIcon" viewBox="0 0 20 20">&gt;
-			<use xlink:href="{path}#jqShowcaseRight"></use></svg></div>`,
-		check: `<svg class="jqShowcaseIcon" viewBox="0 0 32 32">&#x2714;
-			<use xlink:href="{path}#jqShowcaseCheck"></use></svg>`,
+		close: '<div class="jqShowcaseIconX"><div class="jqShowcaseIconR"></div><div class="jqShowcaseIconL"></div></div>',
+		left: '<div class="jqShowcaseIconL"></div>',
+		right: '<div class="jqShowcaseIconR"></div>',
+		check: '<div class="jqShowcaseIconCheck"><div class="jqShowcaseIcon1"></div><div class="jqShowcaseIcon2"></div></div>',
 	};
 	
 	/** CSS Classes */
@@ -149,18 +145,18 @@ window.Showcase = (($, global) => {
 	const elems = {
 		container: '<div id="jqShowcaseContainer"></div>',
 		symbols: '<div id="jqShowcaseSymbols"></div>',
-		navLeft: '<div id="jqShowcaseLeft"></div>',
-		navRight: '<div id="jqShowcaseRight"></div>',
+		navLeft: `<div id="jqShowcaseLeft">${icons.left}</div>`,
+		navRight: `<div id="jqShowcaseRight">${icons.right}</div>`,
 		wrapper: '<div id="jqShowcaseWrapper"></div>',
 		contentWrapper: '<div id="jqShowcaseContentWrapper"></div>',
-		close: '<div id="jqShowcaseClose"></div>',
+		close: `<div id="jqShowcaseClose">${icons.close}</div>`,
 		content: '<div id="jqShowcaseContent"></div>',
 		info: '<div id="jqShowcaseInfo"><p></p></div>',
 		alert: `<div id="jqShowcasePopup"><p class="${classes.message}">{message}</p>
-			<button id="jqShowcaseConfirm">{button}{check}</button></div>`,
+			<button id="jqShowcaseConfirm">{button}${icons.check}</button></div>`,
 		confirm: `<div id="jqShowcasePopup"><p class="${classes.message}">{message}</p><div id="jqShowcaseButtons">
-			<button id="jqShowcaseConfirm">{confirm}{check}</button>
-			<button id="jqShowcaseCancel">{cancel}{close}</button></div></div>`,
+			<button id="jqShowcaseConfirm">{confirm}${icons.check}</button>
+			<button id="jqShowcaseCancel">{cancel}${icons.close}</button></div></div>`,
 		prompt: '<input type="text" value="">',
 	};
 	
@@ -307,37 +303,8 @@ window.Showcase = (($, global) => {
 			
 			$('body').append(this.main);
 			
-			this.setIcons()
-				.setTitles()
+			this.setTitles()
 				.setDOMEvents();
-			
-		}
-		
-		/**
-		 * Set the nav icons
-		 * @return {Object} The Plugin instance
-		 */
-		setIcons () {
-			
-			const path = this.symbols.css('backgroundImage').slice(5, -2) || '',
-				keys = Object.keys(icons);
-			
-			// Set the path for the icons
-			keys.forEach((k) => {
-				icons[k] = icons[k].replace('{path}', path);
-			});
-			
-			// Set Nav Icons
-			this.navLeft.append(icons.left);
-			this.navRight.append(icons.right);
-			this.close.append(icons.close);
-			
-			// Set Popup Icons
-			elems.alert = elems.alert.replace('{check}', icons.check);
-			elems.confirm = elems.confirm.replace('{check}', icons.check)
-				.replace('{close}', icons.close);
-			
-			return this;
 			
 		}
 		
