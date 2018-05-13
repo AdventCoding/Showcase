@@ -158,6 +158,7 @@ window.Showcase = (($, global) => {
 			<button id="jqShowcaseConfirm">{confirm}${icons.check}</button>
 			<button id="jqShowcaseCancel">{cancel}${icons.close}</button></div></div>`,
 		prompt: '<input type="text" value="">',
+		video: '<video{data} controls><source src="{source}" type="video/{type}"></video>',
 	};
 	
 	/**
@@ -194,7 +195,8 @@ window.Showcase = (($, global) => {
 		animate: true,
 		fade: true,
 		cloneData: false,
-		imageRegExp: /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|\.png|\.svg|\.tif|\.tiff|\.wbmp$/,
+		imageRegExp: /\.bmp|\.gif|\.ico|\.jpe|\.jpeg|\.jpg|\.png|\.apng|\.svg|\.tif|\.tiff|\.wbmp$/,
+		videoRegExp: /\.mp4|\.ogg|\.webm$/,
 		controlText: {
 			close: 'Close',
 			navLeft: 'Navigate Left',
@@ -878,6 +880,7 @@ window.Showcase = (($, global) => {
 				};
 			
 			let src = '',
+				type = '',
 				hash = '',
 				data = '',
 				loaded = false,
@@ -914,6 +917,16 @@ window.Showcase = (($, global) => {
 						prepare(false);
 						
 					}
+					
+				} else if (opts.videoRegExp.test(src)) {
+					
+					// Reload Showcase with video element
+					loaded = true;
+					type = src.match(/\.([0-9a-z]+)$/i) || ['', 'webm'];
+					$(elems.video.replace('{source}', src)
+						.replace('{data}', data)
+						.replace('{type}', type[1]))
+						.showcase(this.options, this.callback);
 					
 				} else {
 					
