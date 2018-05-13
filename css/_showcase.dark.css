@@ -1,16 +1,14 @@
 #jqShowcaseContainer {
-	--text-nav: #ffffff;
-	--text-primary: #000000;
-	--text-active: #00cc55;
-	--text-danger: #c23434;
-	--border-content: #ffffff;
-	--border-primary: #727272;
-	--border-secondary: #313131;
-	--border-active: #00cf56;
-	--border-danger: #bb0606;
-	--bg-overlay: rgba(0, 0, 0, 0.85);
-	--bg-primary: #ffffff;
-	--bg-primary-object: rgba(255, 255, 255, 0.5);
-	--bg-button: #777777;
-	--bg-danger: #9b2929;
+	--active: #2bbd68;
+	--danger: #f02f2f;
+	--text-primary: #ffffff;
+	--text-secondary: #000000;
+	--border-nav: #000000;
+	--border-content: #000000;
+	--border-primary: #494949;
+	--border-secondary: #a7a7a7;
+	--bg-overlay: rgba(80, 80, 80, 0.9);
+	--bg-primary: #202020;
+	--bg-primary-object: rgba(0, 0, 0, 0.5);
+	--bg-button: #a7a7a7;
 }

@@ -85,8 +85,8 @@
 .jqShowcaseIcon {
 	display: inline-block;
 	stroke-width: 0;
-	stroke: var(--text-nav);
-	fill: var(--text-nav);
+	stroke: var(--text-secondary);
+	fill: var(--text-secondary);
 }
 
 /* Main Container */
@@ -166,7 +166,7 @@
 #jqShowcaseContainer .jqShowcaseIconL,
 #jqShowcaseContainer .jqShowcaseIconR {
 	display: inline-block;
-	border: 0 solid var(--border-content);
+	border: 0 solid var(--border-nav);
 	border-top-width: 0.25rem;
 	width: 0.8rem;
 	height: 0.8rem;
@@ -263,7 +263,7 @@
 	letter-spacing: 2px;
 	text-align: center;
 	text-decoration: none;
-	color: var(--text-nav);
+	color: var(--text-secondary);
 	background: var(--bg-button);
 	cursor: pointer;
 	transition: all 0.4s;

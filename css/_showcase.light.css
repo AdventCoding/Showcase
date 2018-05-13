@@ -1,11 +1,12 @@
 #jqShowcaseContainer {
 	--active: #00cf56;
-	--danger: #9b2929;
-	--text-nav: #ffffff;
+	--danger: #af1d1d;
 	--text-primary: #000000;
+	--text-secondary: #ffffff;
+	--border-nav: #ffffff;
 	--border-content: #ffffff;
-	--border-primary: #727272;
-	--border-secondary: #313131;
+	--border-primary: #a3a3a3;
+	--border-secondary: #777777;
 	--bg-overlay: rgba(0, 0, 0, 0.85);
 	--bg-primary: #ffffff;
 	--bg-primary-object: rgba(255, 255, 255, 0.5);
