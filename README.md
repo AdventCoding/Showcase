@@ -43,11 +43,13 @@ Showcase.disable();
 | fade | If the Showcase elements should fade in and out | true |
 | cloneData | If data and events should be copied from the target element to the cloned element | false |
 | imageRegExp | The image RegExp used to check for image content in links | (See imageRegExp variable below) |
+| videoRegExp | The video RegExp used to check for video content in links | (See videoRegExp variable below) |
 | controlText | The title texts for the navigation elements | (See controlText variable below) |
-| promise | The Promise to fulfill before loading the content | null |
+| promise | The Promise to fulfill before loading the content (if the Promise is rejected with a string, that string will be Showcased) | null |
 
 ```js
 let imageRegExp = /\.bmp|\.gif|\.jpe|\.jpeg|\.jpg|\.png|\.svg|\.tif|\.tiff|\.wbmp$/;
+let videoRegExp = /\.mp4|\.ogg|\.webm$/;
 let controlText = {
   close: 'Close',
   navLeft: 'Navigate Left',
