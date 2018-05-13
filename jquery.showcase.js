@@ -168,12 +168,13 @@ window.Showcase = (($, global) => {
 	 * @property {number|string} height The height for the Showcase or 'auto'
 	 * @property {number} currentIndex The current index if showcasing a jQuery collection
 	 * @property {string|jQuery} infoContent The html string or jQuery object to place in the info box
-	 * @property {bool} scaleMedia Allows <img> and <video> to scale based on aspect ratio
+	 * @property {bool} scaleMedia If <img> and <video> elements should be scaled based on aspect ratio
 	 * @property {bool} forceScaling Force Showcase to scale and respect aspect ratio
 	 * @property {bool} animate If the Showcase elements should animate in
 	 * @property {bool} fade If the Showcase elements should fade in and out
-	 * @property {bool} cloneData If data and events should be copied from the element to the Showcase clone
+	 * @property {bool} cloneData If data and events should be copied from the target element to the cloned element
 	 * @property {RegExp} imageRegExp The image RegExp used to check for image content
+	 * @property {RegExp} videoRegExp The video RegExp used to check for video content
 	 * @property {ControlText} controlText The title texts for the nav elements
 	 * @property {Promise} promise The Promise to fulfill before loading the content
 	 *  (if the Promise is rejected with a string, that string will be Showcased)
