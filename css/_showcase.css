@@ -183,6 +183,9 @@
 		border-right-width: 0.25rem;
 		transform: rotate(45deg);
 	}
+	#jqShowcaseContainer .jqShowcaseIconX {
+		transform: translateY(-50%);
+	}
 	#jqShowcaseContainer .jqShowcaseIconX .jqShowcaseIconL,
 	#jqShowcaseContainer .jqShowcaseIconX .jqShowcaseIconR {
 		float: none;
