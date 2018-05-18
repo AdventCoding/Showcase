@@ -144,7 +144,6 @@ window.Showcase = (($, global) => {
 	/** Structural Elements */
 	const elems = {
 		container: '<div id="jqShowcaseContainer"></div>',
-		symbols: '<div id="jqShowcaseSymbols"></div>',
 		navLeft: `<div id="jqShowcaseLeft">${icons.left}</div>`,
 		navRight: `<div id="jqShowcaseRight">${icons.right}</div>`,
 		wrapper: '<div id="jqShowcaseWrapper"></div>',
@@ -291,7 +290,6 @@ window.Showcase = (($, global) => {
 			this.main = $(elems.container).addClass(
 				`${classes.disable} ${classes.transparent}`
 			);
-			this.symbols = $(elems.symbols).appendTo(this.main);
 			this.navLeft = $(elems.navLeft).appendTo(this.main);
 			this.wrapper = $(elems.wrapper).appendTo(this.main);
 			this.close = $(elems.close).appendTo(this.wrapper);
@@ -1062,8 +1060,10 @@ window.Showcase = (($, global) => {
 					
 					this.content.css({ width: opts.width });
 					
-					// Check if width needs to override the minimum width
-					if (opts.width < parseInt(this.content.css('minWidth'))) {
+					// Check if viewport is too narrow or if minWidth is too large
+					if ($(window).width() < opts.width) {
+						this.content.css({ width: $(window).width() });
+					} else if (opts.width < parseInt(this.content.css('minWidth'))) {
 						this.content.css('minWidth', opts.width);
 					} else {
 						this.content.css('minWidth', '');
@@ -1075,7 +1075,9 @@ window.Showcase = (($, global) => {
 					this.content.css({ height: opts.height });
 					
 					// Check if height needs to override the minimum height
-					if (opts.height < parseInt(this.content.css('minHeight'))) {
+					if ($(window).height() < opts.height) {
+						this.content.css({ height: $(window).height() });
+					} else if (opts.height < parseInt(this.content.css('minHeight'))) {
 						this.content.css('minHeight', opts.height);
 					} else {
 						this.content.css('minHeight', '');
