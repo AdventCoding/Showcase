@@ -229,7 +229,7 @@
 						// Showcase closes after 5 seconds (expire)
 						if (res === true) {
 							Showcase.alert('Awesome!', null, null, 5);
-						} else {
+						} else if (res === false) {
 							Showcase.alert('To each their own.', null, null, 5);
 						}
 						
@@ -238,7 +238,9 @@
 				case 'prompt':
 					Showcase.prompt('What is your name?', 'OK', $('<textarea></textarea>'), function (res) {
 						
-						Showcase.alert(`You entered: <br>${$('<p></p>').text(res).html()}`, null);
+						if (res !== null) {
+							Showcase.alert(`You entered: <br>${$('<p></p>').text(res).html()}`, null);
+						}
 						
 					});
 					break;

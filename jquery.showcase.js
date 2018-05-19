@@ -1696,7 +1696,7 @@ window.Showcase = (($, global) => {
 		 * @param {any?} result The result of the Popup
 		 * @return void
 		 */
-		static popup (e, result = false) {
+		static popup (e, result = null) {
 			
 			api.off('disable', Utility.popup);
 			
@@ -1960,7 +1960,7 @@ window.Showcase = (($, global) => {
 		 * Callback for alert Popup
 		 * The this keyword refers to the global Showcase object
 		 * @callback Alert
-		 * @param {bool} response True if button was clicked, false if Showcase was closed
+		 * @param {bool} response True if button was clicked, null if Showcase was closed
 		 */
 		alert (message, button = 'OK', callback = $.noop, expire = 0) {
 			
@@ -2015,7 +2015,7 @@ window.Showcase = (($, global) => {
 		 * Callback for confirm Popup
 		 * The this keyword refers to the global Showcase object
 		 * @callback Confirm
-		 * @param {bool} response True if confirmed, false if cancelled or Showcase was closed
+		 * @param {bool} response True if confirmed, false if cancelled, null if Showcase was closed
 		 */
 		confirm (message, buttons = ['OK', 'CANCEL'], callback = $.noop) {
 			
@@ -2067,7 +2067,7 @@ window.Showcase = (($, global) => {
 		 * The this keyword refers to the global Showcase object
 		 * @callback Prompt
 		 * @param {string|string[]|bool} response The trimmed string, or array of strings, from the user input,
-		 *  or false if the Showcase was closed
+		 *  or null if Showcase was closed
 		 */
 		prompt (message, button = 'OK', input = elems.prompt, callback = $.noop) {
 			

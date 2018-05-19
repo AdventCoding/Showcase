@@ -131,7 +131,7 @@ Display an alert Popup
  - message {string} : The message to display
  - button {string} : The text for the alert button (null to disable)
  - callback {Function} : The callback to execute after the alert is dismissed
- >The callback receives true if the button was clicked, or false if the Showcase was closed
+ >The callback receives true if the button was clicked, or null if the Showcase was closed
 
 ### .confirm(message, callback)
 ### .confirm(message, buttons, callback)
@@ -140,7 +140,7 @@ Display a confirmation Popup
  - message {string} : The message to display
  - buttons {string[]} : The array of texts for the confirm and cancel buttons
  - callback {Function} : The callback to execute after confirmation or cancellation
- >The callback receives true if the confirm button was clicked, or false if the cancel button was clicked or the Showcase was closed
+ >The callback receives true if the confirm button was clicked, false if the cancel button was clicked, or null if the Showcase was closed
 
 ### .prompt(message, callback)
 ### .prompt(message, button, input, callback)
@@ -150,7 +150,7 @@ Display a prompt Popup
  - button {string} : The text for the prompt confirmation button
  - input {string|jQuery} : The input, textarea, or select element html string, or a jQuery element object for the user input
  - callback {Function} : The callback to execute after the prompt is complete
- >The callback receives the trimmed string, or array of trimmed strings for multiple inputs, from the user input, or false if the Showcase was closed
+ >The callback receives the trimmed string, or array of trimmed strings for multiple inputs, from the user input, or null if the Showcase was closed
 
 ## License
 
