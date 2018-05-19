@@ -13,6 +13,10 @@
 #jqShowcaseContainer .jqSCAnimated #jqShowcaseContent {
 	display: none;
 }
+#jqShowcaseContainer .jqSCProgressBar {
+	display: block;
+	transition: width 1s ease;
+}
 
 /* Visibility Classes */
 #jqShowcaseContainer.jqSCDisabled,
@@ -183,9 +187,6 @@
 		border-right-width: 0.25rem;
 		transform: rotate(45deg);
 	}
-	#jqShowcaseContainer .jqShowcaseIconX {
-		transform: translateY(-50%);
-	}
 	#jqShowcaseContainer .jqShowcaseIconX .jqShowcaseIconL,
 	#jqShowcaseContainer .jqShowcaseIconX .jqShowcaseIconR {
 		float: none;
@@ -221,11 +222,21 @@
 	-moz-user-select: none;
 	user-select: none;
 }
-	#jqShowcaseClose > div {
+	#jqShowcaseClose > .jqShowcaseIconX {
 		position: absolute;
 		align-self: flex-start;
 		right: -2rem;
 		cursor: pointer;
+		transform: translateY(-50%);
+	}
+	#jqShowcaseProgress {
+		position: absolute;
+		display: none;
+		left: 0;
+		border-radius: 5px;
+		height: 5px;
+		background-color: var(--bg-progress);
+		opacity: 0.5;
 	}
 
 #jqShowcaseLeft,

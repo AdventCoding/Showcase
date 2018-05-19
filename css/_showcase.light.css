@@ -10,5 +10,6 @@
 	--bg-overlay: rgba(0, 0, 0, 0.85);
 	--bg-primary: #ffffff;
 	--bg-primary-object: rgba(255, 255, 255, 0.5);
-	--bg-button: #777777;
+	--bg-button: #919191;
+	--bg-progress: #6ec46e;
 }

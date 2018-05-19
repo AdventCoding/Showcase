@@ -25,7 +25,8 @@ window.Showcase = (($, global) => {
 	let inst = null,
 		api = null,
 		initialized = false,
-		timer = null;
+		timer = null,
+		expTimer = null;
 	
 	/** Namespaces */
 	const ns = {
@@ -127,6 +128,7 @@ window.Showcase = (($, global) => {
 		fade: 'jqSCFaded',
 		animate: 'jqSCAnimated',
 		load: 'jqSCLoading',
+		progressBar: 'jqSCProgressBar',
 		disable: 'jqSCDisabled',
 		hide: 'jqSCHidden',
 		transparent: 'jqSCTransparent',
@@ -149,6 +151,7 @@ window.Showcase = (($, global) => {
 		wrapper: '<div id="jqShowcaseWrapper"></div>',
 		contentWrapper: '<div id="jqShowcaseContentWrapper"></div>',
 		close: `<div id="jqShowcaseClose">${icons.close}</div>`,
+		expProgress: '<div id="jqShowcaseProgress"></div>',
 		content: '<div id="jqShowcaseContent"></div>',
 		info: '<div id="jqShowcaseInfo"><p></p></div>',
 		alert: `<div id="jqShowcasePopup"><p class="${classes.message}">{message}</p>
@@ -172,6 +175,7 @@ window.Showcase = (($, global) => {
 	 * @property {bool} animate If the Showcase elements should animate in
 	 * @property {bool} fade If the Showcase elements should fade in and out
 	 * @property {bool} cloneData If data and events should be copied from the target element to the cloned element
+	 * @property {number} expire The amount of seconds before the Showcase closes automatically (0 to disable)
 	 * @property {RegExp} imageRegExp The image RegExp used to check for image content
 	 * @property {RegExp} videoRegExp The video RegExp used to check for video content
 	 * @property {ControlText} controlText The title texts for the nav elements
@@ -195,6 +199,7 @@ window.Showcase = (($, global) => {
 		animate: true,
 		fade: true,
 		cloneData: false,
+		expire: 0,
 		imageRegExp: /\.bmp|\.gif|\.ico|\.jpe|\.jpeg|\.jpg|\.png|\.apng|\.svg|\.tif|\.tiff|\.wbmp$/,
 		videoRegExp: /\.mp4|\.ogg|\.webm$/,
 		controlText: {
@@ -276,6 +281,7 @@ window.Showcase = (($, global) => {
 			this.failsafeEngaged = false;
 			this.failsafeTimer = null;
 			this.deferReset = false;
+			this.expire = false;
 			this.options = Object.assign({}, defaults);
 			this.callback = $.noop;
 			this.background = classes.background;
@@ -293,6 +299,7 @@ window.Showcase = (($, global) => {
 			this.navLeft = $(elems.navLeft).appendTo(this.main);
 			this.wrapper = $(elems.wrapper).appendTo(this.main);
 			this.close = $(elems.close).appendTo(this.wrapper);
+			this.expProgress = $(elems.expProgress).appendTo(this.close);
 			this.contentWrapper = $(elems.contentWrapper).appendTo(this.wrapper);
 			this.content = $(elems.content).appendTo(this.contentWrapper);
 			this.infoParent = $(elems.info).appendTo(this.wrapper);
@@ -306,6 +313,36 @@ window.Showcase = (($, global) => {
 			
 			this.setTitles()
 				.setDOMEvents();
+			
+		}
+		
+		/**
+		 * Set the Showcase expiration
+		 * @return {Object} The Plugin instance
+		 */
+		setExpiration () {
+			
+			if (this.expire > 0) {
+				
+				expTimer = global.setTimeout(() => {
+					this.close.children('.jqShowcaseIconX').trigger('click');
+				}, this.expire * 1000);
+				
+				this.expProgress.removeClass(classes.progressBar)
+					.css({ width: '100%' })
+					.addClass(classes.progressBar)
+					.css({
+						transitionDuration: `${this.expire}s`,
+						width: 0,
+					});
+				
+			} else {
+				
+				this.expProgress.removeClass(classes.progressBar);
+				
+			}
+			
+			return this;
 			
 		}
 		
@@ -337,7 +374,7 @@ window.Showcase = (($, global) => {
 		setDOMEvents () {
 			
 			// Close Button
-			this.close.children('div').on(`click.${ns.event}`, () => {
+			this.close.children('.jqShowcaseIconX').on(`click.${ns.event}`, () => {
 				this.uninit();
 			});
 			
@@ -510,6 +547,7 @@ window.Showcase = (($, global) => {
 			Utility.clearTimer();
 			this.failsafe(false);
 			this.newLoad = false;
+			this.expProgress.removeClass(classes.progressBar);
 			
 			// Trigger listeners and check for new load
 			$(global.Showcase).trigger(`${ns.prefix}disable.${ns.customEvent}`);
@@ -539,7 +577,7 @@ window.Showcase = (($, global) => {
 			
 			if (opts.fade) {
 				
-				// Set transparency for fade in
+				// Set transparency for fade out
 				this.main.addClass(classes.transparent);
 				Utility.setTransitionEnd(this.main)
 					.then(end)
@@ -819,6 +857,7 @@ window.Showcase = (($, global) => {
 			this.callback = callback.bind(global.Showcase);
 			this.fadeContent = (this.options.animate && this.options.fade);
 			
+			if (this.options.expire > 0) { this.expire = this.options.expire; }
 			if (this.options.controlText) { this.setTitles(); }
 			if (this.options.fade) {
 				this.main.addClass(classes.fade);
@@ -1122,9 +1161,11 @@ window.Showcase = (($, global) => {
 			this.showElems();
 			this.busy = false;
 			this.callback();
+			this.setExpiration();
 			
-			// Use callback only once
+			// Use callback and expiration only once
 			this.callback = $.noop;
+			this.expire = false;
 			
 			// Check for input element to focus
 			if (input.length > 0) {
@@ -1505,6 +1546,8 @@ window.Showcase = (($, global) => {
 			
 			global.clearTimeout(timer);
 			timer = null;
+			global.clearTimeout(expTimer);
+			expTimer = null;
 			
 		}
 		
@@ -1621,7 +1664,7 @@ window.Showcase = (($, global) => {
 				e.call(global.Showcase, result);
 				inst.uninit();
 				
-			} else {
+			} else if (e && $.isFunction(e.data)) {
 				
 				e.data.call(global.Showcase, result);
 				
@@ -1863,6 +1906,7 @@ window.Showcase = (($, global) => {
 		 * @param {string} message The message to display
 		 * @param {string?} button The text for the alert button (null to disable)
 		 * @param {Alert?} callback The callback to execute after the alert is dismissed
+		 * @param {bool} expire The amount of seconds before the Showcase closes automatically
 		 * @return {Object} The global Showcase object
 		 */
 		/**
@@ -1877,7 +1921,7 @@ window.Showcase = (($, global) => {
 		 * @callback Alert
 		 * @param {bool} response True if button was clicked, false if Showcase was closed
 		 */
-		alert (message, button = 'OK', callback = $.noop) {
+		alert (message, button = 'OK', callback = $.noop, expire = 0) {
 			
 			// Overload
 			if ($.isFunction(button)) {
@@ -1906,6 +1950,7 @@ window.Showcase = (($, global) => {
 			popup.showcase({
 				width: Utility.getPopupWidth(message),
 				cloneData: true,
+				expire,
 			});
 			
 			return this;

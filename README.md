@@ -42,6 +42,7 @@ Showcase.disable();
 | animate | If the Showcase elements should animate in | true |
 | fade | If the Showcase elements should fade in and out | true |
 | cloneData | If data and events should be copied from the target element to the cloned element | false |
+| expire | The amount of seconds before the Showcase closes automatically (0 to disable) | 0 |
 | imageRegExp | The image RegExp used to check for image content in links | (See imageRegExp variable below) |
 | videoRegExp | The video RegExp used to check for video content in links | (See videoRegExp variable below) |
 | controlText | The title texts for the navigation elements | (See controlText variable below) |

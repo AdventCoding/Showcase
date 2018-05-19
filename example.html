@@ -226,10 +226,11 @@
 				case 'confirm':
 					Showcase.confirm('Do you like jQuery?', ['YES', 'NO'], function (res) {
 						
+						// Showcase closes after 5 seconds (expire)
 						if (res === true) {
-							Showcase.alert('Awesome!', null);
+							Showcase.alert('Awesome!', null, null, 5);
 						} else {
-							Showcase.alert('To each their own.', null);
+							Showcase.alert('To each their own.', null, null, 5);
 						}
 						
 					});
