@@ -1,6 +1,6 @@
 {
   "name": "jqshowcase",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "The jQuery Showcase Plugin makes it easy to display content in a modal window.",
   "main": "jquery.showcase.js",
   "scripts": {
