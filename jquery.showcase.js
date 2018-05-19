@@ -579,7 +579,7 @@ window.Showcase = (($, global) => {
 				
 				// Set transparency for fade out
 				this.main.addClass(classes.transparent);
-				Utility.setTransitionEnd(this.main)
+				Utility.setTransitionEnd(this.main, 'opacity')
 					.then(end)
 					.catch(errorHandler);
 				
@@ -687,20 +687,21 @@ window.Showcase = (($, global) => {
 		 */
 		setDimensions (width = 0, height = 0, animate = false) {
 			
-			const w = Math.floor(parseFloat(inst.wrapper.css('maxWidth'))) - Math.floor(width),
-				h = Math.floor(parseFloat(inst.contentWrapper.css('maxHeight'))) - Math.floor(height);
+			const both = this.wrapper.add(this.contentWrapper),
+				noWidth = (Math.abs(Math.floor(parseFloat(inst.wrapper.css('maxWidth'))) - Math.floor(width)) < 2),
+				noHeight = (Math.abs(Math.floor(parseFloat(inst.contentWrapper.css('maxHeight'))) - Math.floor(height)) < 2),
+				transitions = new Set(['max-width', 'max-height']);
+			
+			// Remove transition check if not animating property
+			if (noWidth) { transitions.delete('max-width'); }
+			if (noHeight) { transitions.delete('max-height'); }
 			
 			// Force no animation/fade if dimensions are close to the same
-			if (animate
-				&& Math.abs(w) < 2
-				&& Math.abs(h) < 2) {
-				
+			if (animate && noWidth && noHeight) {
 				animate = false;
-				
 			}
 			
-			const both = this.wrapper.add(this.contentWrapper),
-				classFn = (animate) ? 'addClass' : 'removeClass';
+			const classFn = (animate) ? 'addClass' : 'removeClass';
 			
 			// Add or remove the animate class and show content border
 			both[classFn](classes.animate);
@@ -712,7 +713,7 @@ window.Showcase = (($, global) => {
 			return new Promise((resolve, reject) => {
 				
 				if (animate) {
-					Utility.setTransitionEnd(this.wrapper.add(this.contentWrapper))
+					Utility.setTransitionEnd(both, transitions)
 						.then(() => {
 							
 							both.removeClass(classes.animate);
@@ -1554,17 +1555,57 @@ window.Showcase = (($, global) => {
 		/**
 		 * Set the transition event for animation
 		 * @param {jQuery} elem The jQuery object(s) to set the event for
+		 * @param {string?} property The property to check for on transition end
 		 * @return {Promise}
 		 */
-		static setTransitionEnd (elem) {
+		static setTransitionEnd (elem, property = null) {
 			
 			return new Promise((resolve, reject) => {
 				
+				const end = () => {
+					
+					elem.off(`transitionend.${ns.event}`);
+					resolve();
+					
+				};
+				
+				let transition = '';
+				
 				try {
+					
+					// Set event and check transitioned property for resolve
 					elem.off(`transitionend.${ns.event}`)
-						.on(`transitionend.${ns.event}`, resolve);
+						.on(`transitionend.${ns.event}`, (e) => {
+							
+							if (property) {
+								
+								transition = e.originalEvent.propertyName;
+								
+								if (transition === property) {
+									
+									end();
+									
+								} else if (property instanceof Set) {
+									
+									// Remove matched property and check for end of Set
+									property.delete(transition);
+									if (property.size < 1) { end(); }
+									
+								}
+								
+							} else {
+								
+								// Resolve on any transition end
+								end();
+								
+							}
+							
+						});
+					
 				} catch (e) {
+					
 					reject(e);
+					
 				}
 				
 			});
